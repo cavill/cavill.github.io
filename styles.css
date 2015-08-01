@@ -1,0 +1,57 @@
+body {
+	background: black;
+    margin: 0;
+    font-size: 7vw;
+    font-family: "Times New Roman", serif;
+}
+
+h1, h2, h3, h4, h5, h6, main a {
+    font-family: sans-serif;
+    letter-spacing: -0.045em;
+}
+
+header, main {
+    background-color: white;
+    padding: 0.25em;
+}
+
+main {
+    padding-bottom: 1em;
+}
+
+p {
+    margin: 0;
+    text-indent: 1.4em;
+    letter-spacing: 0em;
+}
+
+main a {
+    letter-spacing: 0;
+    text-decoration: none;
+    border: 1px solid blue;
+    color: inherit;
+}
+
+::selection {
+    background: #0000EE;
+    color: white;
+}
+
+.redacted {
+    background-color: black;
+}
+
+.redacted::selection {
+    background-color: black;
+    color: black;
+}
+
+footer {
+    padding: 1em 0.25em 2em;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
