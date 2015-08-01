@@ -15,6 +15,10 @@ header, main {
     padding: 0.25em;
 }
 
+.lead {
+    letter-spacing: -0.13em;
+}
+
 main {
     padding-bottom: 1em;
 }
