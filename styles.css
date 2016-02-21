@@ -4,13 +4,12 @@ body {
     font-size: 7vw;
     font-family: -apple-system, "Times New Roman", serif;
 font-weight: 200;
-    letter-spacing: 0em;
+    letter-spacing: 0;
 }
 
 h1, h2, h3, h4, h5, h6, main a {
     font-family: -apple-system, sans-serif;
-    font-weight: 400;
-    letter-spacing: 0em;
+    font-weight: 300;
 }
 
 header, main {
@@ -29,13 +28,10 @@ main {
 p {
     margin: 0;
     text-indent: 1.4em;
-    letter-spacing: 0em;
 }
 
 main a {
-    letter-spacing: 0;
     text-decoration: none;
-    border: 1px solid blue;
     color: inherit;
 }
 
