@@ -2,11 +2,11 @@ body {
 	background: black;
     margin: 0;
     font-size: 7vw;
-    font-family: "Times New Roman", serif;
+    font-family: -apple-system, "Times New Roman", serif;
 }
 
 h1, h2, h3, h4, h5, h6, main a {
-    font-family: sans-serif;
+    font-family: -apple-system, sans-serif;
     letter-spacing: -0.045em;
 }
 
