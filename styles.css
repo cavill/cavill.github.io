@@ -7,7 +7,8 @@ body {
 
 h1, h2, h3, h4, h5, h6, main a {
     font-family: -apple-system, sans-serif;
-    letter-spacing: -0.045em;
+    font-weight: 200;
+    letter-spacing: 0em;
 }
 
 header, main {
