@@ -6,7 +6,6 @@ body {
 font-weight: 200;
     letter-spacing: 0;
     line-height: 1.25em;
-    padding: 0.25em;
 }
 
 h1, h2, h3, h4, h5, h6, a{
@@ -24,7 +23,7 @@ header, main {
 }
 
 main {
-    padding-bottom: 1em;
+    padding: 0.25em 0.25em 1em;
 }
 
 p {
