@@ -2,14 +2,14 @@ body {
 	background: black;
     margin: 0;
     font-size: 7vw;
-    font-family: -apple-system, "Times New Roman", serif;
+    font-family: -apple-system, ".SFNSText-Regular", "Times New Roman", serif;
 font-weight: 200;
     letter-spacing: 0;
     line-height: 1.25em;
 }
 
 h1, h2, h3, h4, h5, h6, a{
-    font-family: -apple-system, sans-serif;
+    font-family: -apple-system, ".SFNSText-Regular", sans-serif;
     font-weight: 300;
 }
 
