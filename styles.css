@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6, a{
 }
 
 header, main, footer {
-    padding: 0.25em;
+    padding: 0.5em;
 }
 
 .lead {
@@ -23,7 +23,7 @@ header, main, footer {
 }
 
 main {
-    padding-bottom: 0.25em 0.25em 1em;
+    padding-bottom: 1em;
 }
 
 p {
