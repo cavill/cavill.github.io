@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-size: 4.5vmax;
     font-family: -apple-system, ".SFNSText-Regular", "Roboto", "Times New Roman", serif;
-    font-weight: 300;
+    font-weight: 200;
     letter-spacing: 0;
     line-height: 1.25em;
 }
@@ -30,7 +30,7 @@ p {
     text-indent: 1.4em;
 }
 
-main a {
+main a, footer a {
     text-decoration: none;
     color: inherit;
     box-shadow: inset 0 -0.45em 0 transparent;
