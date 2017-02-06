@@ -3,7 +3,7 @@ body {
     color: white;
     margin: 0;
     font-size: 4.5vmax;
-    font-family: -apple-system, ".SFNSText-Regular", "Roboto", serif;
+    font-family: -apple-system, ".SFNSText-Regular", "Roboto", sans-serif;
     font-weight: 300;
     letter-spacing: 0;
     line-height: 1.25em;
@@ -32,6 +32,7 @@ p {
 a {
     text-decoration: none;
     color: inherit;
+    font-family: -apple-system, ".SFNSText-Regular", "Roboto", serif;
 }
 
 a:hover {
