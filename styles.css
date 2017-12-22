@@ -78,6 +78,9 @@ a:hover {
     color: #02b875;
 }
 
+.link-ft {
+    color: #fff1e5;
+
 ::selection {
     background: rgba(255,192,203, 0.25);
     color: rgba(255,192,203, 1);
