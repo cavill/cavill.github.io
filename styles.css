@@ -4,6 +4,7 @@ body {
   padding: 10px 0;
 }
 
+/*
 @media all and (max-width: 480px) {
   .page {
     height: auto;
@@ -19,6 +20,28 @@ body {
   margin: 0 auto;
   height: 0;
   padding-bottom: 141.4752116082225%;
+}
+*/
+
+.page {
+  width: 820px;
+  background: white;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;;
+  margin: 0 auto;
+  height: 0;
+  padding-bottom: 141.4752116082225%;
+}
+@media all and (min-width: 481px) and (max-width: 819px) {
+  .page {
+    width: 100%;
+  }
+}
+@media all and (max-width: 480px) {
+  .page {
+    width: 100%;
+    height: auto;
+    padding-bottom: 50px;
+  }
 }
 
 main {
