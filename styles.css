@@ -30,7 +30,7 @@ main {
   padding: 10%;
 }
 
-div:focus {
+main:focus {
   outline: none;
 }
 
