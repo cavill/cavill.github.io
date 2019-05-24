@@ -1,7 +1,14 @@
 body {
   background: rgb(248, 249, 250);
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
   padding: 10px 0;
+}
+
+@media all and (max-width: 480px) {
+  .page {
+    height: auto;
+    padding-bottom: 50px;
+  }
 }
 
 .page {
@@ -12,13 +19,6 @@ body {
   margin: 0 auto;
   height: 0;
   padding-bottom: 141.4752116082225%;
-}
-
-@media all and (max-width: 480px) {
-  .page {
-    height: auto;
-    padding-bottom: 50px;
-  }
 }
 
 main {
