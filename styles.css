@@ -1,59 +1,164 @@
-* {
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 100%;
+  overflow-y: scroll; /* 1 */
+  min-height: 100%;
 }
 
 body {
   background: #ffffff;
   color: black;
   font-family: serif;
-  -webkit-font-smoothing: antialiased;
   font-size: 2vw;
   line-height: 1.4em;
-  margin: 5% 2.5%;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0e0e0e;
-    color: white;
-  }
 }
 
 img {
-  max-width: 33.333%;
+  max-width: 50vw;
+  position: relative;
 }
 
-header, article {
+article {
+  padding: 5% 2.5%;
   max-width: 66.666%;
+  position: relative;
+  z-index: 100;
+}
+
+.z0 {
+  z-index: 0;
 }
 
 header:after {
   content: '—';
-/*   display: block;
-  width: 1em;
-  border-bottom: 1px solid; */
 }
 
 header p {
   font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 0;
 }
 
 article p {
   margin-bottom: 1.2em;
 }
 
-.qm {
-    text-indent: -.5em;
-    display: inline-block;
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+  
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  
+    text-align: center;
+  }
+
+.reduce-opacity {
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.prominent {
+  opacity: 1;
+  z-index: 1100;
+}
+
+.figlink {
+}
+.figlink::after {
+  content: ' (img)';
+  
+  position: relative;
+  top: -1em;
+  font-size: 0.5em;
+  line-height: 1.4em;
+}
+
+.figlink:hover {
+  cursor: zoom-in;
+}
+.figlink:hover::after {
+  opacity: 1;
+}
+
+.blah {
+  text-decoration: underline;
+}
+.blah::before {
+  content:'X';
+}
+
+/* =======Modals======== */
+
+
+/**
+ * Modals ($modals)
+ */
+
+/* 1. Ensure this sits above everything when visible */
+.modal {
+    position: absolute;
+    z-index: 10000; /* 1 */
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.modal:hover {
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABF0lEQVRoge2YTQ6CMBCFn15HvA3Ghd6DpSy9Mxhc2NmUQvh50w5mvsSFIZl5XxvaCYDjOI7jLOdy5B4tgB7AU6sBgBpAB+DNLtwCGMJPS0LCSx+aRBUVHsL/O6tBqBX36AFcWQ3i1WHuhGZt9UbZwms0zB6e2fhGqLGLPRLFwwtbJMyEF9ZImAsvLJGYCv/ImnSGOQnz4YWUxAe/sObDCymJw4QXaoxXXXaDHv7MLgjgtPGZCVIvrLljc4pU+KmX2JzE3FFZbGhbypJz3qzEmkvKnMSWG9aMxJ7xoLgEY7YpJsEczLJLaEyV2SQ0R2J1iQrj2zTHh60u9KbQgL/yMfFOvNgNGujP8yJBDy8c+vO64ziO8398ATeyJVdD8yeUAAAAAElFTkSuQmCC'), auto;
+}
+
+.modal.is-visible {
+    visibility: visible;
+}
+
+.modal-overlay {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal.is-visible .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-wrapper {
+  z-index: 9999;
 }
 
 @media screen and (max-width: 785px) {
 
   body {
-    margin: 5%;
     font-size: 5vw;
   }
-
+  
+  article {
+    margin: 5%;
+  }
+  
   header, article {
     max-width: 100%;
   }
@@ -61,6 +166,21 @@ article p {
   img {
     max-width: 100%;
   }
+  
+  .modal, figure {
+    display:none !important;
+  }
+  .figlink::after {
+    content: none;
+  }
 
-
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0e0e0e;
+    color: white;
+  }
+  .modal-overlay {
+    background: rgba(0,0,0,0.5);
+  }
 }
