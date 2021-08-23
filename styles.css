@@ -37,10 +37,6 @@ article {
   z-index: 0;
 }
 
-header:after {
-  content: '—';
-}
-
 header p {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
