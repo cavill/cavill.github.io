@@ -75,6 +75,7 @@ article p {
 }
 
 .figlink {
+  font-weight: 600;
 }
 .figlink::after {
   content: ' (img)';
