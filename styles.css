@@ -16,7 +16,7 @@ html {
 body {
   background: #ffffff;
   color: black;
-  font-family: 'Roboto Mono', monospace;;
+  font-family: 'Roboto Mono', monospace;
   font-size: 1.8vw;
   line-height: 1.4em;
   font-weight: 400;
@@ -150,7 +150,7 @@ article p {
 @media screen and (max-width: 785px) {
 
   body {
-    font-size: 5.4vw;
+    font-size: 4.8vw;
   }
   
   article {
