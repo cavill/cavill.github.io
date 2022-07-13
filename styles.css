@@ -38,7 +38,7 @@ article {
   z-index: 0;
 }
 
-header p {
+header p, .figlink {
   -webkit-font-smoothing: antialiased;
   margin-top: 0;
   font-family: sans-serif;
@@ -80,7 +80,8 @@ main {
 }
 
 .figlink {
-  font-style: italic;
+  font-style: normal;
+  font-size: inherit;
 }
 .figlink::after {
   content: ' (img)';
