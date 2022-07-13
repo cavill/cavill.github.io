@@ -16,7 +16,7 @@ html {
 body {
   background: #ffffff;
   color: black;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Xanh Mono', monospace;
   font-size: 1.8vw;
   line-height: 1.4em;
   font-weight: 400;
@@ -39,7 +39,7 @@ article {
 }
 
 header p {
-  font-weight: 600;
+  font-style: italic;
   -webkit-font-smoothing: antialiased;
   margin-top: 0;
 }
@@ -75,7 +75,7 @@ article p {
 }
 
 .figlink {
-  font-weight: 600;
+  font-style: italic;
 }
 .figlink::after {
   content: ' (img)';
