@@ -17,7 +17,7 @@ body {
   background: #ffffff;
   color: black;
   font-family: 'Xanh Mono', monospace;
-  font-size: 1.8vw;
+  font-size: 1.2vw;
   line-height: 1.4em;
   font-weight: 400;
 }
@@ -42,10 +42,17 @@ header p {
   font-style: italic;
   -webkit-font-smoothing: antialiased;
   margin-top: 0;
+  font-size: 1.8vw;
+  font-family: sans-serif;
 }
 
 article p {
   margin-bottom: 1.2em;
+}
+
+main {
+  padding-right: 14vw;
+  font-size: 90%;
 }
 
 .centered {
@@ -159,6 +166,11 @@ article p {
   
   header, article {
     max-width: 100%;
+  }
+  
+  main {
+    padding-right: 0;
+    font-size: inherit;
   }
   
   img {
