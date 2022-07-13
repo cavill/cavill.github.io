@@ -50,7 +50,8 @@ article p {
 
 main {
   padding-right: 14vw;
-  font-size: 90%;
+  font-size: 80%;
+  line-height: 1.4em;
 }
 
 .centered {
