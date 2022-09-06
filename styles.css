@@ -47,8 +47,12 @@ a:link, a:visited, a:focus {
   color: inherit;
 }
 
-hgroup, aside, main p {
+hgroup, aside {
   margin-bottom: 1.4em;
+}
+
+p {
+  margin-bottom: 0.7em;
 }
 
 @media screen and (max-width: 785px) {
