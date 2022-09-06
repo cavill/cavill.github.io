@@ -1,13 +1,18 @@
-// Swap bg image
-function figswap() {
-  var di = $(this).attr('data-image')
-  $(".figure").attr("src",di)
+var w = $(window).width();
+var h = $(window).height();
+
+function addDot(c) {
+  var tLeft = Math.floor(Math.random()*(w*0.5)),
+      tTop  = Math.floor(Math.random()*(h-50));
+  
+  $('body').append('<div class="' + c + ' dot" style="top:' + tTop + 'px; left:' + tLeft + 'px"></div>');
 }
 
-$( ".figlink" ).on( "mouseover", figswap );
+$(document).ready(function() {
+   const rgb = ["alpha", "beta", "gamma"];
 
-$('.modal-toggle').on('click', function(e) {
-  e.preventDefault();
-  $('.modal').toggleClass('is-visible');
+   let dots = "";
+   for (let i = 0; i < rgb.length; i++) {
+    addDot(rgb[i]);
+   }
 });
-
