@@ -14,144 +14,32 @@ html {
 }
 
 body {
-  background: #cccccc;
+  background: #ffffff;
   color: black;
-  font-family: 'Xanh Mono', monospace;
-  font-size: 2vw;
-  line-height: 1.4em;
-  font-weight: 400;
-}
-
-img {
-  max-width: 50vw;
-  position: relative;
+  font-family: 'Work Sans', sans-serif;
 }
 
 article {
-  padding: 3% 2.5%;
-  max-width: 66.666%;
+  padding: 3% 2.5% 3% 33.3%;
   position: relative;
   z-index: 100;
 }
 
-.z0 {
-  z-index: 0;
-}
-
-header p, .figlink {
-  -webkit-font-smoothing: antialiased;
-  margin-top: 0;
-  font-family: sans-serif;
-}
-
-article p {
-  margin-bottom: 1.2em;
-}
-
-main {
-  padding-right: 14vw;
-  font-size: 80%;
+h1,h2,h3,h4,p,li {
+  font-size: 3vw;
   line-height: 1.4em;
+  font-weight: 400;
+}
+h1 {
+  font-weight: 500;
+}
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 100vh;
-  
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  
-    text-align: center;
-  }
-
-.reduce-opacity {
-  opacity: 0.25;
-  z-index: 0;
-}
-
-.prominent {
-  opacity: 1;
-  z-index: 1100;
-}
-
-.figlink {
-  font-style: normal;
-  font-size: inherit;
-}
-.figlink::after {
-  content: ' (img)';
-  
-  position: relative;
-  top: -1em;
-  font-size: 0.5em;
-  line-height: 1.4em;
-}
-
-.figlink:hover {
-  cursor: zoom-in;
-}
-.figlink:hover::after {
-  opacity: 1;
-}
-
-.blah {
-  text-decoration: underline;
-}
-.blah::before {
-  content:'X';
-}
-
-/* =======Modals======== */
-
-
-/**
- * Modals ($modals)
- */
-
-/* 1. Ensure this sits above everything when visible */
-.modal {
-    position: absolute;
-    z-index: 10000; /* 1 */
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    width: 100%;
-    height: 100%;
-}
-
-.modal:hover {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABF0lEQVRoge2YTQ6CMBCFn15HvA3Ghd6DpSy9Mxhc2NmUQvh50w5mvsSFIZl5XxvaCYDjOI7jLOdy5B4tgB7AU6sBgBpAB+DNLtwCGMJPS0LCSx+aRBUVHsL/O6tBqBX36AFcWQ3i1WHuhGZt9UbZwms0zB6e2fhGqLGLPRLFwwtbJMyEF9ZImAsvLJGYCv/ImnSGOQnz4YWUxAe/sObDCymJw4QXaoxXXXaDHv7MLgjgtPGZCVIvrLljc4pU+KmX2JzE3FFZbGhbypJz3qzEmkvKnMSWG9aMxJ7xoLgEY7YpJsEczLJLaEyV2SQ0R2J1iQrj2zTHh60u9KbQgL/yMfFOvNgNGujP8yJBDy8c+vO64ziO8398ATeyJVdD8yeUAAAAAElFTkSuQmCC'), auto;
-}
-
-.modal.is-visible {
-    visibility: visible;
-}
-
-.modal-overlay {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.5);
-  visibility: hidden;
-  opacity: 0;
-}
-
-.modal.is-visible .modal-overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-wrapper {
-  z-index: 9999;
+hgroup, aside, main p {
+  margin-bottom: 1.4em;
 }
 
 @media screen and (max-width: 785px) {
@@ -161,36 +49,13 @@ main {
   }
   
   article {
-    margin: 5%;
-  }
-  
-  header, article {
     max-width: 100%;
+    padding-left: 2.5%;
   }
-  
-  main {
-    padding-right: 0;
-    font-size: inherit;
-  }
-  
-  img {
-    max-width: 100%;
-  }
-  
-  .modal, figure {
-    display:none !important;
-  }
-  .figlink::after {
-    content: none;
-  }
-
 }
 @media (prefers-color-scheme: dark) {
   body {
     background: #0e0e0e;
     color: white;
-  }
-  .modal-overlay {
-    background: rgba(0,0,0,0.5);
   }
 }
