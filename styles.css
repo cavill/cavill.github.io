@@ -49,7 +49,7 @@ hgroup, aside, main p {
 
 @media screen and (max-width: 785px) {
 
-  body {
+  h1,h2,h3,h4,p,li {
     font-size: 6vw;
   }
   
