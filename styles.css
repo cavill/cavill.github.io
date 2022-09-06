@@ -20,7 +20,7 @@ body {
 }
 
 article {
-  padding: 2.5% 2.5% 2.5% 33.3%;
+  padding: 2.5% 5% 2.5% 33.3%;
   position: relative;
   z-index: 100;
 }
@@ -60,6 +60,7 @@ hgroup, aside, main p {
   article {
     max-width: 100%;
     padding-left: 2.5%;
+    padding-right: 2.5%;
   }
 }
 @media (prefers-color-scheme: dark) {
