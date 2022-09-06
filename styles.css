@@ -38,6 +38,10 @@ ul {
   list-style: none;
   padding: 0;
 }
+a:link,a:hover,a:visited,a:focused,a:active {
+  text-decoration: none;
+  color: inherit;
+}
 
 hgroup, aside, main p {
   margin-bottom: 1.4em;
