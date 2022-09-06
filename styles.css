@@ -55,6 +55,24 @@ p {
   margin-bottom: 0.7em;
 }
 
+.dot {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 150px;
+  z-index: -1;
+}
+
+.alpha {
+  background: Red;
+}
+.beta {
+  background: Blue;
+}
+.gamma {
+  background: Gold;
+}
+
 @media screen and (max-width: 785px) {
 
   h1,h2,h3,h4,p,li {
