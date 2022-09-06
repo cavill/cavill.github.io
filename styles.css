@@ -20,15 +20,16 @@ body {
 }
 
 article {
-  padding: 3% 2.5% 3% 33.3%;
+  padding: 2.5% 2.5% 2.5% 33.3%;
   position: relative;
   z-index: 100;
 }
 
 h1,h2,h3,h4,p,li {
-  font-size: 3vw;
+  font-size: 2.4vw;
   line-height: 1.4em;
   font-weight: 400;
+  letter-spacing: -0.025em;
 }
 h1 {
   font-weight: 500;
@@ -45,7 +46,7 @@ hgroup, aside, main p {
 @media screen and (max-width: 785px) {
 
   body {
-    font-size: 4.8vw;
+    font-size: 6vw;
   }
   
   article {
