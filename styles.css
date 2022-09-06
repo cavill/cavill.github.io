@@ -38,8 +38,12 @@ ul {
   list-style: none;
   padding: 0;
 }
-a,a:link,a:hover,a:visited,a:focused,a:active {
+
+a {
   text-decoration: none;
+  color: inherit;
+}
+a:link, a:visited, a:focus {
   color: inherit;
 }
 
