@@ -87,6 +87,10 @@ p {
     padding-left: 2.5%;
     padding-right: 2.5%;
   }
+  
+  a:hover:after {
+    content: ''; /* prevent emoji on hover */
+  }
 }
 @media (prefers-color-scheme: dark) {
   body {
