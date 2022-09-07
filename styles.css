@@ -46,6 +46,9 @@ a {
 a:link, a:visited, a:focus {
   color: inherit;
 }
+a:hover:after {
+  content: '↗';
+}
 
 hgroup, aside {
   margin-bottom: 1.4em;
