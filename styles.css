@@ -64,6 +64,7 @@ p {
   position: absolute;
   border-radius: 150px;
   z-index: -1;
+  filter: blur(8px);
 }
 
 .alpha {
