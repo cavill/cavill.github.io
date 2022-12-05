@@ -57,6 +57,7 @@ hgroup, aside {
 }
 
 main {
+  padding-top: 1.4em;
   padding-right: 12%;
 }
 
@@ -128,7 +129,7 @@ p {
   }
 
   main {
-    padding-right: 0;
+    padding: 0;
   }
 }
 @media (prefers-color-scheme: dark) {
