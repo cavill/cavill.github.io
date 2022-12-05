@@ -9,6 +9,7 @@ function addDot(c) {
   dot.className = c + " dot";
   dot.style.top = tTop + "px";
   dot.style.left = tLeft + "px";
+  dot.style.opacity = 0;
   document.body.appendChild(dot);
 
   // animate the dot
@@ -26,6 +27,15 @@ function addDot(c) {
     dot.style.left = newLeft + "px";
     angle += speed;
   }, 100);
+
+  // fade in the dot
+  var fadeInSpeed = 0.01;
+  var fadeInInterval = setInterval(function() {
+    dot.style.opacity = parseFloat(dot.style.opacity) + fadeInSpeed;
+    if (dot.style.opacity >= 1) {
+      clearInterval(fadeInInterval);
+    }
+  }, 10);
 }
 
 window.addEventListener("load", function() {
