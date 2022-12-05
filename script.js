@@ -10,16 +10,16 @@ function addDot(c) {
   dot.style.top = tTop + "px";
   dot.style.left = tLeft + "px";
   document.body.appendChild(dot);
-}
 
-// animate the dot
-var angle = 0;
-var orbitRadius = 100;
-setInterval(function() {
-  dot.style.top = (h/2 - orbitRadius * Math.sin(angle)) + "px";
-  dot.style.left = (w/2 + orbitRadius * Math.cos(angle)) + "px";
-  angle += 0.1;
-}, 10);
+  // animate the dot
+  var angle = 0;
+  var orbitRadius = 100;
+  setInterval(function() {
+    dot.style.top = (h/2 - orbitRadius * Math.sin(angle)) + "px";
+    dot.style.left = (w/2 + orbitRadius * Math.cos(angle)) + "px";
+    angle += 0.1;
+  }, 10);
+}
 
 window.addEventListener("load", function() {
   const rgb = ["alpha", "beta", "gamma"];
