@@ -16,7 +16,7 @@ function addDot(c) {
   var startTop = parseInt(dot.style.top);
   var centerLeft = w/2;
   var centerTop = h/2;
-  var angle = 0;
+  var angle = Math.atan2(startTop - centerTop, startLeft - centerLeft);
   var orbitRadius = 100;
   var speed = 1 / Math.sqrt(Math.pow(startLeft - centerLeft, 2) + Math.pow(startTop - centerTop, 2));
   setInterval(function() {
