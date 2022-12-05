@@ -14,8 +14,8 @@ function addDot(c) {
   // animate the dot
   var startLeft = parseInt(dot.style.left);
   var startTop = parseInt(dot.style.top);
-  var centerLeft = w/2;
-  var centerTop = h/2;
+  var centerLeft = Math.floor(Math.random()*w);
+  var centerTop = Math.floor(Math.random()*h);
   var angle = Math.atan2(startTop - centerTop, startLeft - centerLeft);
   var orbitRadius = 100;
   var speed = 1 / Math.sqrt(Math.pow(startLeft - centerLeft, 2) + Math.pow(startTop - centerTop, 2));
