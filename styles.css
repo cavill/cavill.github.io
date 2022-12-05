@@ -67,6 +67,28 @@ p {
   filter: blur(8px);
 }
 
+/* Grid layout */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column1, .column2 {
+  flex: 1;
+}
+
+.column3 {
+  flex: 3;
+}
+
+/* dots */
+
 .alpha {
   background: Red;
 }
@@ -76,6 +98,8 @@ p {
 .gamma {
   background: Gold;
 }
+
+
 
 @media screen and (max-width: 785px) {
 
@@ -91,6 +115,10 @@ p {
   
   a:hover:after {
     content: ''; /* prevent emoji on hover */
+  }
+  
+  .row1 {
+    flex-direction: column;
   }
 }
 @media (prefers-color-scheme: dark) {
