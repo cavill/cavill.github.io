@@ -1,18 +1,22 @@
-var w = $(window).width();
-var h = $(window).height();
+var w = window.innerWidth;
+var h = window.innerHeight;
 
 function addDot(c) {
   var tLeft = Math.floor(Math.random()*(w*0.5)),
       tTop  = Math.floor(Math.random()*(h-50));
   
-  $('body').append('<div class="' + c + ' dot" style="top:' + tTop + 'px; left:' + tLeft + 'px"></div>');
+  var dot = document.createElement('div');
+  dot.className = c + " dot";
+  dot.style.top = tTop + "px";
+  dot.style.left = tLeft + "px";
+  document.body.appendChild(dot);
 }
 
-$(document).ready(function() {
-   const rgb = ["alpha", "beta", "gamma"];
+window.addEventListener("load", function() {
+  const rgb = ["alpha", "beta", "gamma"];
 
-   let dots = "";
-   for (let i = 0; i < rgb.length; i++) {
+  let dots = "";
+  for (let i = 0; i < rgb.length; i++) {
     addDot(rgb[i]);
-   }
+  }
 });
