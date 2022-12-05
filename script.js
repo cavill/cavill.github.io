@@ -12,13 +12,18 @@ function addDot(c) {
   document.body.appendChild(dot);
 
   // animate the dot
+  // animate the dot
+  var startLeft = parseInt(dot.style.left);
+  var startTop = parseInt(dot.style.top);
   var angle = 0;
   var orbitRadius = 100;
   setInterval(function() {
-    dot.style.top = (h/2 - orbitRadius * Math.sin(angle)) + "px";
-    dot.style.left = (w/2 + orbitRadius * Math.cos(angle)) + "px";
-    angle += 0.1;
-  }, 10);
+    var newLeft = startLeft + orbitRadius * Math.cos(angle);
+    var newTop = startTop + orbitRadius * Math.sin(angle);
+    dot.style.top = newTop + "px";
+    dot.style.left = newLeft + "px";
+    angle += 0.01;
+  }, 100);
 }
 
 window.addEventListener("load", function() {
