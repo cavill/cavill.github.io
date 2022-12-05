@@ -13,10 +13,31 @@ html {
   min-height: 100%;
 }
 
+/* fonts */
+@font-face {
+  font-family: "Octave-Regular";
+  src: url("fonts/Octave-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Octave-Bold";
+  src: url("fonts/Octave-Bold.woff2") format("woff2");
+}
+
+body {
+  font-family: "Octave-Regular", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Octave-Bold", sans-serif;
+}
+
+/* end fonts */
+
 body {
   background: #ffffff;
   color: black;
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: "Octave-Regular", sans-serif;
 }
 
 article {
@@ -32,7 +53,7 @@ h1,h2,h3,h4,p,li {
   letter-spacing: -0.04em;
 }
 h1 {
-  font-weight: 600;
+  font-family: "Octave-Bold", sans-serif;
 }
 ul {
   list-style: none;
