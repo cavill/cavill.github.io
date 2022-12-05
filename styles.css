@@ -54,6 +54,10 @@ hgroup, aside {
   margin-bottom: 1.4em;
 }
 
+main {
+  padding-right: 12%;
+}
+
 p {
   margin-bottom: 0.7em;
 }
