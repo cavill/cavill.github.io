@@ -55,9 +55,7 @@ h1,h2,h3,h4,p,li {
 h1 {
   font-family: "Octave-Bold", sans-serif;
 }
-h2 {
-  opacity: 0.75;
-}
+
 ul {
   list-style: none;
   padding: 0;
@@ -66,14 +64,11 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
-  opacity: 0.75;
 }
 a:link, a:visited, a:focus {
   color: inherit;
 }
-a:hover {
-  opacity: 1;
-}
+
 a:hover:after {
   content: '↗';
 }
