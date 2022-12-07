@@ -22,12 +22,12 @@ window.addEventListener("load", function() {
 });
 
 // Select the divs on the page
-const dots = document.querySelectorAll(".dot");
+const dot_move = document.querySelectorAll(".dot");
 
 // Set up a function that will be called repeatedly to move the dots
 function moveDots() {
   // Loop through each dot
-  dots.forEach(dot => {
+  dots.forEach(dot_move => {
     // Generate new random x and y positions for the dot
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * window.innerHeight;
@@ -39,4 +39,4 @@ function moveDots() {
 }
 
 // Set the moveDots() function to be called every 1000 milliseconds (1 second)
-setInterval(moveDots, 8000);
+setInterval(moveDots, 2000);
