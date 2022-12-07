@@ -22,21 +22,21 @@ window.addEventListener("load", function() {
 });
 
 // Select the divs on the page
-const dot_move = document.querySelectorAll(".dot");
+const dott = document.querySelectorAll(".dot");
 
 // Set up a function that will be called repeatedly to move the dots
 function moveDots() {
   // Loop through each dot
-  dots.forEach(dot_move => {
+  dots.forEach(dott => {
     // Generate new random x and y positions for the dot
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * window.innerHeight;
 
     // Update the dot's position using the new x and y values
-    dot.style.left = `${x}px`;
-    dot.style.top = `${y}px`;
+    dott.style.left = `${x}px`;
+    dott.style.top = `${y}px`;
   });
 }
 
 // Set the moveDots() function to be called every 1000 milliseconds (1 second)
-setInterval(moveDots, 2000);
+setInterval(moveDots, 3000);
