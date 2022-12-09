@@ -3,13 +3,14 @@ var h = window.innerHeight;
 
 function addDot(c) {
   var tLeft = Math.floor(Math.random()*(w*0.5)),
-      tTop  = Math.floor(Math.random()*(h-50));
+      tTop  = Math.floor(Math.random()*(h-50)),
+      deg = Math.floor(Math.random() * 360);
   
   var dot = document.createElement('div');
   dot.className = c + " dot";
   dot.style.top = tTop + "px";
   dot.style.left = tLeft + "px";
-  dot.style.rotate = "(" + tLeft + "deg)";
+  dot.style.transform = `rotate(${deg}deg)`;
   document.body.appendChild(dot);
 }
 
