@@ -1,11 +1,13 @@
 var w = window.innerWidth;
 var h = window.innerHeight;
 
+var hgtmax = 140;
+
 function addDot(c) {
   var tLeft = Math.floor(Math.random()*(w*0.5)),
-      tTop  = Math.floor(Math.random()*(h-50)),
+      tTop  = Math.floor(Math.random()*(h-hgtmax)),
       deg = Math.floor(Math.random() * 360),
-      hgt = Math.floor(Math.random() * (140 - 30 + 1) + 30);
+      hgt = Math.floor(Math.random() * (hgtmax - 20 + 1) + 20);
   
   var dot = document.createElement('div');
   dot.className = c + " dot";
