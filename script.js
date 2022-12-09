@@ -8,7 +8,7 @@ function addDot(c) {
   if (w > 784) {
     tLeft = Math.floor(Math.random()*(w*0.5))
   } else {
-    tLeft = Math.floor(Math.random()*(w))
+    tLeft = Math.floor(Math.random()*(w*0.85))
   }
   var tTop  = Math.floor(Math.random()*(h-hgtmax)),
       deg = Math.floor(Math.random() * 360),
