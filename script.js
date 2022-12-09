@@ -5,7 +5,7 @@ function addDot(c) {
   var tLeft = Math.floor(Math.random()*(w*0.5)),
       tTop  = Math.floor(Math.random()*(h-50)),
       deg = Math.floor(Math.random() * 360),
-      hgt = Math.floor(Math.random() * (140 - 30 + 1) + min);
+      hgt = Math.floor(Math.random() * (140 - 30 + 1) + 30);
   
   var dot = document.createElement('div');
   dot.className = c + " dot";
