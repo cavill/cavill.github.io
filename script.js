@@ -6,9 +6,9 @@ var hgtmax = 140;
 function addDot(c) {
 
   if (w > 784) {
-    tLeft = Math.floor(Math.random()*(w*0.5))
+    tLeft = Math.floor(Math.random()*(w*0.45))
   } else {
-    tLeft = Math.floor(Math.random()*(w*0.85))
+    tLeft = Math.floor(Math.random()*(w*0.8))
   }
   var tTop  = Math.floor(Math.random()*(h-hgtmax)),
       deg = Math.floor(Math.random() * 360),
