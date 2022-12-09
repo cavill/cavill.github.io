@@ -17,7 +17,7 @@ function addDot(c) {
 }
 
 window.addEventListener("load", function() {
-  const rgb = ["alpha", "beta", "gamma"];
+  const rgb = ["alpha", "beta", "gamma", "delta", "epsilon"];
 
   let dots = "";
   for (let i = 0; i < rgb.length; i++) {
