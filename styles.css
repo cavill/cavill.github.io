@@ -87,12 +87,10 @@ p {
 }
 
 .dot {
-  width: 100px;
+  width: 20px;
   height: 100px;
   position: absolute;
-  border-radius: 150px;
   z-index: -1;
-  filter: blur(8px);
 }
 
 /* Grid layout */

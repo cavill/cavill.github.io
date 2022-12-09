@@ -9,6 +9,7 @@ function addDot(c) {
   dot.className = c + " dot";
   dot.style.top = tTop + "px";
   dot.style.left = tLeft + "px";
+  dot.style.rotate = "(" + tLeft + "deg)";
   document.body.appendChild(dot);
 }
 
