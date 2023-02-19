@@ -19,7 +19,7 @@ function addDot(c) {
   dot.style.top = tTop + "px";
   dot.style.left = tLeft + "px";
   dot.style.transform = `rotate(${deg}deg)`;
-  dot.style.height = hgt + "px";
+  dot.style.height = (hgt * 0.5) + "vw";
   document.body.appendChild(dot);
 }
 
