@@ -87,7 +87,7 @@ p {
 }
 
 .dot {
-  width: 20px;
+  width: 3vw;
   height: 100px;
   position: absolute;
   z-index: -1;
