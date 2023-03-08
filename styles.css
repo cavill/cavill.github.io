@@ -35,8 +35,8 @@ h1 {
 /* end fonts */
 
 body {
-  background: #ffffff;
-  color: black;
+  background: #fafafa;
+  color: #18181b;
   font-family: "Octave-Regular", sans-serif;
 }
 
@@ -159,7 +159,7 @@ p {
 }
 @media (prefers-color-scheme: dark) {
   body {
-    background: #0e0e0e;
-    color: white;
+    background: #18181b;
+    color: #fafafa;
   }
 }
