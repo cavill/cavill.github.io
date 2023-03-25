@@ -35,7 +35,7 @@ h1 {
 /* end fonts */
 
 body {
-  background: #fafafa;
+  background: #98999E;
   color: #18181b;
   font-family: "Octave-Regular", sans-serif;
 }
@@ -116,16 +116,16 @@ p {
 /* dots */
 
 .alpha {
-  background: Red;
+  background: #DE4540;
 }
 .beta {
-  background: Blue;
+  background: #2154D3;
 }
 .gamma {
-  background: Gold;
+  background: #F4B33F;
 }
 .delta {
-  background: Pink;
+  background: #F6F7FC;
 }
 .epsilon {
   background: Green;
