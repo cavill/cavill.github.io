@@ -155,7 +155,7 @@ main {
   main { padding-right: 0; }
 
   h1,h2,h3,h4,p,li {
-    font-size: 5vw;
+    font-size: 4.75vw;
   }
 
   .container {
@@ -166,6 +166,10 @@ main {
     width: 100%;
     padding-left: 2.5%;
     padding-right: 2.5%;
+  }
+
+  .header-column:first-child {
+    flex: 2; /* push nav out into an effective 3rd col */
   }
   
   a:hover:after {
