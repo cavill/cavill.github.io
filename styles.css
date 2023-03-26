@@ -78,7 +78,7 @@ a:hover:after {
 }
 
 main {
-  padding-right: 10%;
+  padding-right: 15%; /* for a more optimal line length */
 }
 
 p {
@@ -148,8 +148,14 @@ main {
 
 @media screen and (max-width: 785px) {
 
+  html, body {
+    height: calc(100% - 16px);
+  }
+
+  main { padding-right: 0; }
+
   h1,h2,h3,h4,p,li {
-    font-size: 4vw;
+    font-size: 5vw;
   }
 
   .container {
