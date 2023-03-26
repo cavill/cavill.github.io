@@ -148,10 +148,6 @@ main {
 
 @media screen and (max-width: 785px) {
 
-  html, body {
-    height: calc(100% - 16px);
-  }
-
   main { padding-right: 0; }
 
   h1,h2,h3,h4,p,li {
