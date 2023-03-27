@@ -100,7 +100,7 @@ p {
 .container {
   display: flex;
   justify-content: flex-end;
-  height: calc(100% - 36px); /* viewport height minus 16px top margin and 20px bottom margin */
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0 20px; /* gutter */
