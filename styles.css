@@ -13,6 +13,10 @@ html, body {
   height: 100%;
 }
 
+body {
+  padding: 16px 0;
+}
+
 html {
   font-size: 100%;
   overflow-y: scroll; /* 1 */
@@ -98,7 +102,7 @@ p {
   justify-content: flex-end;
   height: calc(100% - 36px); /* viewport height minus 16px top margin and 20px bottom margin */
   width: 100%;
-  margin: 16px 0;
+  margin: 0;
   padding: 0 20px; /* gutter */
   box-sizing: border-box;
 }
