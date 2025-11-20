@@ -148,7 +148,42 @@ main {
   background: Green;
 }
 
+/* Styles for image sections */
+.images {
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+}
 
+.image-section {
+  display: flex;
+  align-items: center;
+  margin: 2em 0;
+}
+
+.image-section .caption {
+  flex: 0 0 33.333%;
+  align-self: flex-start;
+  position: sticky;
+  top: 2em;
+  padding-right: 2em;
+  font-size: 1.4vw;
+  color: #313133;
+}
+
+.image-section image-container {
+  flex: 0 0 66.666%;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-section img:nth-child(2) {
+  margin-top: 20px;
+}
 
 @media screen and (max-width: 785px) {
 
@@ -169,9 +204,33 @@ main {
   .header-column:first-child {
     flex: 2; /* push nav out into an effective 3rd col */
   }
-  
+
   a:hover:after {
     content: ''; /* prevent emoji on hover */
+  }
+
+  .image-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-section .caption {
+    display: none;
+    width: 100%;
+    padding-right: 0;
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+
+  .image-section .image-container {
+    width: 100%;
+    flex: none;
+    margin-bottom: 0;
+  }
+
+  .image-section img {
+    width: 100%;
+    max-width: 100%;
   }
 }
 @media (prefers-color-scheme: dark) {
