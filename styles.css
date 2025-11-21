@@ -81,6 +81,10 @@ a:hover:after {
   content: '↗';
 }
 
+a.down:hover:after {
+  content: '↓';
+}
+
 main {
   padding-right: 15%; /* for a more optimal line length */
 }
@@ -151,8 +155,8 @@ main {
 /* Styles for image sections */
 .images {
   width: 100%;
-  margin: 0;
-  padding: 0 20px;
+  margin: 0 20px;
+  padding: 0 20px 40px 0;
 }
 
 .image-section {
@@ -167,8 +171,10 @@ main {
   position: sticky;
   top: 2em;
   padding-right: 2em;
+}
+
+.caption p {
   font-size: 1.4vw;
-  color: #313133;
 }
 
 .image-section image-container {
@@ -181,7 +187,7 @@ main {
   display: block;
 }
 
-.image-section img:nth-child(2) {
+.image-container > *:not(:first-child) {
   margin-top: 20px;
 }
 
