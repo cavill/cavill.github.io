@@ -20,6 +20,7 @@ body {
 html {
   font-size: 100%;
   overflow-y: scroll; /* 1 */
+  scroll-behavior: smooth;
 }
 
 /* fonts */
@@ -155,7 +156,7 @@ main {
 /* Styles for image sections */
 .images {
   width: 100%;
-  margin: 0 20px;
+  margin: 0;
   padding: 0 20px 40px 0;
 }
 
@@ -169,15 +170,15 @@ main {
   flex: 0 0 33.333%;
   align-self: flex-start;
   position: sticky;
-  top: 2em;
-  padding-right: 2em;
+  top: 1.4em;
+  padding: 0 2em 0 20px;
 }
 
 .caption p {
   font-size: 1.4vw;
 }
 
-.image-section image-container {
+.image-section .image-container {
   flex: 0 0 66.666%;
 }
 
