@@ -246,7 +246,7 @@ main {
 
   .image-section .caption {
     order: 1;
-    padding: 0;
+    padding: 16px 0 0 0;
   }
 
   .image-section .caption p {
