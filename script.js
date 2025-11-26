@@ -42,9 +42,10 @@ window.addEventListener("load", function() {
   function initLazyImages() {
     const placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
     const imgs = Array.from(document.querySelectorAll('.images .image-container img'));
-    if (!imgs.length) return;
+    const vids = Array.from(document.querySelectorAll('.images .image-container video'));
+    if (!imgs.length && !vids.length) return;
 
-    // Convert all images to deferred placeholders (no special-casing)
+    // Convert images to deferred placeholders (no special-casing)
     imgs.forEach((img) => {
       // if already handled (data-src present) skip
       if (img.dataset.src) return;
@@ -58,6 +59,23 @@ window.addEventListener("load", function() {
       }
     });
 
+    // Convert videos: move <source src> -> data-src and prevent preloading
+    vids.forEach((video) => {
+      const sources = Array.from(video.querySelectorAll('source'));
+      if (!sources.length) return;
+      sources.forEach((source) => {
+        if (source.dataset.src) return;
+        const src = source.getAttribute('src');
+        if (src) {
+          source.dataset.src = src;
+          source.removeAttribute('src');
+        }
+      });
+      // Stop the browser from eager-loading
+      try { video.preload = 'none'; } catch (e) {}
+      video.setAttribute('data-lazy', 'true');
+    });
+
     function loadImage(img) {
       const real = img.dataset.src;
       if (!real) return;
@@ -66,22 +84,51 @@ window.addEventListener("load", function() {
       img.removeAttribute('loading');
     }
 
+    function loadVideo(video) {
+      const sources = Array.from(video.querySelectorAll('source'));
+      let loaded = false;
+      sources.forEach((source) => {
+        const real = source.dataset.src;
+        if (!real) return;
+        source.src = real;
+        source.removeAttribute('data-src');
+        loaded = true;
+      });
+      if (!loaded) return;
+      video.removeAttribute('data-lazy');
+      try { video.preload = 'auto'; } catch (e) {}
+      // load new sources
+      try { video.load(); } catch (e) {}
+      // retain autoplay behaviour — ensure muted so autoplay is allowed by browsers
+      if (video.hasAttribute('autoplay')) {
+        try { video.muted = true; } catch (e) {}
+        const p = video.play && video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      }
+    }
+
     if ('IntersectionObserver' in window) {
-      const rootMargin = '1000px 0px'; // adjust to control how early images start loading
+      const rootMargin = '1000px 0px'; // adjust to control how early media starts loading
       const io = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            loadImage(entry.target);
-            observer.unobserve(entry.target);
+          if (!entry.isIntersecting) return;
+          const tgt = entry.target;
+          if (tgt.tagName === 'IMG') {
+            loadImage(tgt);
+          } else if (tgt.tagName === 'VIDEO') {
+            loadVideo(tgt);
           }
+          observer.unobserve(tgt);
         });
       }, { rootMargin, threshold: 0.01 });
 
-      // Observe all images; loading will be controlled by the IntersectionObserver offset
+      // Observe all images and videos; loading will be controlled by the IntersectionObserver offset
       imgs.forEach((img) => io.observe(img));
+      vids.forEach((video) => io.observe(video));
     } else {
-      // Fallback: load all deferred images immediately
+      // Fallback: load all deferred images and videos immediately
       imgs.forEach((img) => loadImage(img));
+      vids.forEach((video) => loadVideo(video));
     }
   }
 

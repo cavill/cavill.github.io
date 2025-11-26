@@ -177,7 +177,7 @@ main {
 .image-section {
   display: flex;
   align-items: center;
-  margin: 32px 0;
+  margin: 64px 0;
 }
 
 .image-section .caption {
