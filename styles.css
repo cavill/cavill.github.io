@@ -192,6 +192,10 @@ main {
   font-size: 1.4vw;
 }
 
+.caption h3 {
+  display: none;
+}
+
 .image-section .image-container {
   flex: 0 0 66.666%;
 }
@@ -237,10 +241,20 @@ main {
   .image-section {
     flex-direction: column;
     align-items: flex-start;
+    order: 0
   }
 
   .image-section .caption {
+    order: 1;
+    padding: 0;
+  }
+
+  .image-section .caption p {
     display: none;
+  }
+
+  .image-section .caption h3 {
+    display: inline-block !important;
   }
 
   .image-section .image-container {
@@ -253,6 +267,7 @@ main {
     width: 100%;
     max-width: 100%;
   }
+  
 }
 @media (prefers-color-scheme: dark) {
   body {
