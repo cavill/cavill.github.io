@@ -33,10 +33,10 @@ window.addEventListener("load", function() {
 });
 
 /* Lazy-load implementation
-   - Keeps the first 3 images (document order) loaded immediately
-   - Defers remaining images by moving `src` -> `data-src` and inserting a tiny placeholder
-   - Uses IntersectionObserver with a configurable `rootMargin` to load images when near viewport
-   - Safe fallback for browsers without IntersectionObserver
+  - Defers images by moving `src` -> `data-src` and inserting a tiny placeholder
+  - Uses IntersectionObserver with a configurable `rootMargin` to load images when near viewport
+  - Relies on offset (rootMargin) alone; no special-casing of the first images
+  - Safe fallback for browsers without IntersectionObserver
 */
 (function() {
   function initLazyImages() {
@@ -44,13 +44,8 @@ window.addEventListener("load", function() {
     const imgs = Array.from(document.querySelectorAll('.images .image-container img'));
     if (!imgs.length) return;
 
-    // Ensure images are handled in document order. Keep first 3 as priority.
-    imgs.forEach((img, idx) => {
-      if (idx < 3) {
-        img.dataset.priority = 'true';
-        return;
-      }
-
+    // Convert all images to deferred placeholders (no special-casing)
+    imgs.forEach((img) => {
       // if already handled (data-src present) skip
       if (img.dataset.src) return;
 
@@ -72,7 +67,7 @@ window.addEventListener("load", function() {
     }
 
     if ('IntersectionObserver' in window) {
-      const rootMargin = '400px 0px'; // adjust to control how early images start loading
+      const rootMargin = '1000px 0px'; // adjust to control how early images start loading
       const io = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -82,14 +77,11 @@ window.addEventListener("load", function() {
         });
       }, { rootMargin, threshold: 0.01 });
 
-      imgs.forEach((img, idx) => {
-        if (idx >= 3) io.observe(img);
-      });
+      // Observe all images; loading will be controlled by the IntersectionObserver offset
+      imgs.forEach((img) => io.observe(img));
     } else {
       // Fallback: load all deferred images immediately
-      imgs.forEach((img, idx) => {
-        if (idx >= 3) loadImage(img);
-      });
+      imgs.forEach((img) => loadImage(img));
     }
   }
 

@@ -23,6 +23,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* utility */
+.m0 {
+  margin: 0 !important;
+}
+
+
 /* fonts */
 @font-face {
   font-family: "Octave-Regular";
@@ -84,6 +90,14 @@ a:hover:after {
 
 a.down:hover:after {
   content: '↓';
+}
+
+a.up:hover:after {
+  content: '↑';
+}
+
+a.no-arrow:hover:after {
+  content: '' !important;
 }
 
 main {
@@ -157,20 +171,20 @@ main {
 .images {
   width: 100%;
   margin: 0;
-  padding: 0 20px 40px 0;
+  padding: 16px 20px 16px 0;
 }
 
 .image-section {
   display: flex;
   align-items: center;
-  margin: 2em 0;
+  margin: 32px 0;
 }
 
 .image-section .caption {
   flex: 0 0 33.333%;
   align-self: flex-start;
   position: sticky;
-  top: 1.4em;
+  top: 16px;
   padding: 0 2em 0 20px;
 }
 
@@ -182,14 +196,14 @@ main {
   flex: 0 0 66.666%;
 }
 
-.image-section img {
-  max-width: 100%;
+.image-section img, .image-section video {
+  width: 100%;
   height: auto;
-  display: block;
+  display: block; 
 }
 
 .image-container > *:not(:first-child) {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 @media screen and (max-width: 785px) {
@@ -216,6 +230,10 @@ main {
     content: ''; /* prevent emoji on hover */
   }
 
+  .images {
+    padding: 16px 20px;
+  }
+  
   .image-section {
     flex-direction: column;
     align-items: flex-start;
@@ -223,10 +241,6 @@ main {
 
   .image-section .caption {
     display: none;
-    width: 100%;
-    padding-right: 0;
-    margin-top: 1em;
-    margin-bottom: 0;
   }
 
   .image-section .image-container {
