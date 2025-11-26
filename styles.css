@@ -20,7 +20,14 @@ body {
 html {
   font-size: 100%;
   overflow-y: scroll; /* 1 */
+  scroll-behavior: smooth;
 }
+
+/* utility */
+.m0 {
+  margin: 0 !important;
+}
+
 
 /* fonts */
 @font-face {
@@ -79,6 +86,18 @@ a:link, a:visited, a:focus {
 
 a:hover:after {
   content: '↗';
+}
+
+a.down:hover:after {
+  content: '↓';
+}
+
+a.up:hover:after {
+  content: '↑';
+}
+
+a.no-arrow:hover:after {
+  content: '' !important;
 }
 
 main {
@@ -148,7 +167,44 @@ main {
   background: Green;
 }
 
+/* Styles for image sections */
+.images {
+  width: 100%;
+  margin: 0;
+  padding: 16px 20px 16px 0;
+}
 
+.image-section {
+  display: flex;
+  align-items: center;
+  margin: 32px 0;
+}
+
+.image-section .caption {
+  flex: 0 0 33.333%;
+  align-self: flex-start;
+  position: sticky;
+  top: 16px;
+  padding: 0 2em 0 20px;
+}
+
+.caption p {
+  font-size: 1.4vw;
+}
+
+.image-section .image-container {
+  flex: 0 0 66.666%;
+}
+
+.image-section img, .image-section video {
+  width: 100%;
+  height: auto;
+  display: block; 
+}
+
+.image-container > *:not(:first-child) {
+  margin-top: 16px;
+}
 
 @media screen and (max-width: 785px) {
 
@@ -169,9 +225,33 @@ main {
   .header-column:first-child {
     flex: 2; /* push nav out into an effective 3rd col */
   }
-  
+
   a:hover:after {
     content: ''; /* prevent emoji on hover */
+  }
+
+  .images {
+    padding: 16px 20px;
+  }
+  
+  .image-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-section .caption {
+    display: none;
+  }
+
+  .image-section .image-container {
+    width: 100%;
+    flex: none;
+    margin-bottom: 0;
+  }
+
+  .image-section img {
+    width: 100%;
+    max-width: 100%;
   }
 }
 @media (prefers-color-scheme: dark) {
