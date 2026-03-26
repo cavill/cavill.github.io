@@ -420,6 +420,34 @@ window.__MEDIA_MANIFEST__ = {
         }
       ]
     },
+    "questionable-video-poster": {
+      "width": 3840,
+      "height": 2160,
+      "animated": false,
+      "defaultSrc": "/images/generated/questionable-video-poster-768.webp",
+      "sources": [
+        {
+          "width": 480,
+          "src": "/images/generated/questionable-video-poster-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/images/generated/questionable-video-poster-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/images/generated/questionable-video-poster-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/images/generated/questionable-video-poster-1440.webp"
+        },
+        {
+          "width": 1920,
+          "src": "/images/generated/questionable-video-poster-1920.webp"
+        }
+      ]
+    },
     "questionable": {
       "width": 3840,
       "height": 2160,
@@ -724,6 +752,14 @@ window.__MEDIA_MANIFEST__ = {
       "sources": {
         "mp4": "/images/generated/heygo_camera.mp4",
         "webm": "/images/generated/heygo_camera.webm"
+      }
+    },
+    "questionable-video": {
+      "width": 1920,
+      "height": 1080,
+      "sources": {
+        "mp4": "/images/generated/questionable-video.mp4",
+        "webm": "/images/generated/questionable-video.webm"
       }
     }
   }

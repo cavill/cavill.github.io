@@ -16,6 +16,18 @@ const manifestPath = path.join(rootDir, "media-manifest.js");
 const imageWidths = [480, 768, 1024, 1440, 1920];
 const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const videoExtensions = new Set([".mp4"]);
+const defaultVideoOptions = {
+  maxWidth: 1280,
+  mp4Crf: 28,
+  webmCrf: 36,
+};
+const videoOptionsByName = {
+  "questionable-video": {
+    maxWidth: 1920,
+    mp4Crf: 22,
+    webmCrf: 30,
+  },
+};
 
 async function ensureDir(dirPath) {
   await fs.mkdir(dirPath, { recursive: true });
@@ -167,6 +179,11 @@ async function runFfmpeg(args) {
 async function buildVideo(filePath) {
   const baseName = path.basename(filePath, path.extname(filePath));
   const { width, height } = await getVideoMetadata(filePath);
+  const videoOptions = {
+    ...defaultVideoOptions,
+    ...(videoOptionsByName[baseName] || {}),
+  };
+  const scaleFilter = `scale='min(${videoOptions.maxWidth},iw)':-2:force_original_aspect_ratio=decrease`;
 
   const mp4TargetPath = path.join(outputDir, `${baseName}.mp4`);
   const webmTargetPath = path.join(outputDir, `${baseName}.webm`);
@@ -181,13 +198,13 @@ async function buildVideo(filePath) {
       "-pix_fmt",
       "yuv420p",
       "-vf",
-      "scale='min(1280,iw)':-2:force_original_aspect_ratio=decrease",
+      scaleFilter,
       "-c:v",
       "libx264",
       "-preset",
       "slow",
       "-crf",
-      "28",
+      String(videoOptions.mp4Crf),
       mp4TargetPath,
     ]);
   }
@@ -198,7 +215,7 @@ async function buildVideo(filePath) {
       filePath,
       "-an",
       "-vf",
-      "scale='min(1280,iw)':-2:force_original_aspect_ratio=decrease",
+      scaleFilter,
       "-c:v",
       "libvpx-vp9",
       "-row-mt",
@@ -206,7 +223,7 @@ async function buildVideo(filePath) {
       "-b:v",
       "0",
       "-crf",
-      "36",
+      String(videoOptions.webmCrf),
       webmTargetPath,
     ]);
   }
