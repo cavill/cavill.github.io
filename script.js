@@ -158,6 +158,91 @@ function loadVideo(video) {
   }
 }
 
+function initMobileCaptions() {
+  const captions = Array.from(document.querySelectorAll(".image-section .caption"));
+
+  captions.forEach((caption) => {
+    const heading = caption.querySelector("h3");
+    if (!heading || caption.querySelector(".caption-body")) {
+      return;
+    }
+
+    const body = document.createElement("div");
+    body.className = "caption-body";
+
+    let sibling = heading.nextElementSibling;
+    while (sibling && sibling.tagName === "P") {
+      const nextSibling = sibling.nextElementSibling;
+      body.appendChild(sibling);
+      sibling = nextSibling;
+    }
+
+    if (!body.childElementCount) {
+      return;
+    }
+
+    body.style.height = "0px";
+    body.setAttribute("aria-hidden", "true");
+    caption.appendChild(body);
+
+    heading.tabIndex = 0;
+    heading.setAttribute("role", "button");
+    heading.setAttribute("aria-expanded", "false");
+    heading.setAttribute("aria-controls", `${heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-")}-details`);
+    body.id = heading.getAttribute("aria-controls");
+
+    const setOpenState = (isOpen) => {
+      body.style.height = `${body.scrollHeight}px`;
+
+      requestAnimationFrame(() => {
+        caption.classList.toggle("is-open", isOpen);
+        heading.setAttribute("aria-expanded", String(isOpen));
+        body.setAttribute("aria-hidden", String(!isOpen));
+        body.style.height = isOpen ? `${body.scrollHeight}px` : "0px";
+      });
+
+      if (isOpen) {
+        const onTransitionEnd = (event) => {
+          if (event.propertyName !== "height") {
+            return;
+          }
+
+          if (caption.classList.contains("is-open")) {
+            body.style.height = "auto";
+          }
+          body.removeEventListener("transitionend", onTransitionEnd);
+        };
+
+        body.addEventListener("transitionend", onTransitionEnd);
+      }
+    };
+
+    const toggleCaption = () => {
+      const isOpen = caption.classList.contains("is-open");
+
+      if (isOpen) {
+        if (body.style.height === "auto") {
+          body.style.height = `${body.scrollHeight}px`;
+        }
+        setOpenState(false);
+        return;
+      }
+
+      setOpenState(true);
+    };
+
+    heading.addEventListener("click", toggleCaption);
+    heading.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      event.preventDefault();
+      toggleCaption();
+    });
+  });
+}
+
 (function initLazyMedia() {
   const imgs = Array.from(document.querySelectorAll(".images .image-container img"));
   const videos = Array.from(
@@ -208,3 +293,5 @@ function loadVideo(video) {
   imgs.forEach((img) => imageObserver.observe(img));
   videos.forEach((video) => videoObserver.observe(video));
 })();
+
+initMobileCaptions();

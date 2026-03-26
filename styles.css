@@ -250,14 +250,69 @@ main {
   .image-section .caption {
     order: 1;
     padding: 16px 0 0 0;
+    width: 100%;
   }
 
-  .image-section .caption p {
+  .image-section .caption > p {
     display: none;
   }
 
   .image-section .caption h3 {
-    display: inline-block !important;
+    display: block !important;
+    position: relative;
+    width: 100%;
+    padding-right: 40px;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+  }
+
+  .image-section .caption h3::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 4.75vw;
+    line-height: 1;
+    transform: translateY(-50%) rotate(0deg);
+    transform-origin: center;
+    transition: transform 300ms ease;
+  }
+
+  .image-section .caption.is-open h3::after {
+    transform: translateY(-50%) rotate(135deg);
+  }
+
+  .image-section .caption .caption-body {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      height 300ms ease,
+      opacity 300ms ease,
+      transform 300ms ease;
+    will-change: height, opacity, transform;
+  }
+
+  .image-section .caption.is-open .caption-body {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .image-section .caption .caption-body p {
+    display: block;
+    font-size: 4.75vw;
+  }
+
+  .image-section .caption .caption-body p:first-child {
+    padding-top: 12px;
+  }
+
+  .image-section .caption .caption-body p:last-child {
+    margin-bottom: 0;
   }
 
   .image-section .image-container {
@@ -272,6 +327,14 @@ main {
   }
   
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .image-section .caption h3::after,
+  .image-section .caption .caption-body {
+    transition: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #18181b;
