@@ -448,6 +448,34 @@ window.__MEDIA_MANIFEST__ = {
         }
       ]
     },
+    "questionable2": {
+      "width": 3840,
+      "height": 2160,
+      "animated": false,
+      "defaultSrc": "/images/generated/questionable2-768.webp",
+      "sources": [
+        {
+          "width": 480,
+          "src": "/images/generated/questionable2-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/images/generated/questionable2-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/images/generated/questionable2-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/images/generated/questionable2-1440.webp"
+        },
+        {
+          "width": 1920,
+          "src": "/images/generated/questionable2-1920.webp"
+        }
+      ]
+    },
     "SC-01": {
       "width": 3840,
       "height": 2160,
