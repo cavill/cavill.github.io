@@ -159,6 +159,10 @@ function loadVideo(video) {
 }
 
 function initMobileCaptions() {
+  if (!window.matchMedia("(max-width: 785px)").matches) {
+    return;
+  }
+
   const captions = Array.from(document.querySelectorAll(".image-section .caption"));
 
   captions.forEach((caption) => {
