@@ -308,6 +308,62 @@ window.__MEDIA_MANIFEST__ = {
         }
       ]
     },
+    "knowall-alt-poster": {
+      "width": 1920,
+      "height": 1080,
+      "animated": false,
+      "defaultSrc": "/images/generated/knowall-alt-poster-768.webp",
+      "sources": [
+        {
+          "width": 480,
+          "src": "/images/generated/knowall-alt-poster-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/images/generated/knowall-alt-poster-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/images/generated/knowall-alt-poster-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/images/generated/knowall-alt-poster-1440.webp"
+        },
+        {
+          "width": 1920,
+          "src": "/images/generated/knowall-alt-poster-1920.webp"
+        }
+      ]
+    },
+    "knowall-static": {
+      "width": 3840,
+      "height": 2160,
+      "animated": false,
+      "defaultSrc": "/images/generated/knowall-static-768.webp",
+      "sources": [
+        {
+          "width": 480,
+          "src": "/images/generated/knowall-static-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/images/generated/knowall-static-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/images/generated/knowall-static-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/images/generated/knowall-static-1440.webp"
+        },
+        {
+          "width": 1920,
+          "src": "/images/generated/knowall-static-1920.webp"
+        }
+      ]
+    },
     "knowall": {
       "width": 3840,
       "height": 2160,
@@ -752,6 +808,14 @@ window.__MEDIA_MANIFEST__ = {
       "sources": {
         "mp4": "/images/generated/heygo_camera.mp4",
         "webm": "/images/generated/heygo_camera.webm"
+      }
+    },
+    "knowall-alt": {
+      "width": 1920,
+      "height": 1080,
+      "sources": {
+        "mp4": "/images/generated/knowall-alt.mp4",
+        "webm": "/images/generated/knowall-alt.webm"
       }
     },
     "questionable-video": {
