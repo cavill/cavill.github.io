@@ -33,11 +33,13 @@ html {
 @font-face {
   font-family: "Octave-Regular";
   src: url("fonts/Octave-Regular.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Octave-Bold";
   src: url("fonts/Octave-Bold.woff2") format("woff2");
+  font-display: swap;
 }
 
 body {
@@ -203,7 +205,8 @@ main {
 .image-section img, .image-section video {
   width: 100%;
   height: auto;
-  display: block; 
+  display: block;
+  background: rgba(246, 247, 252, 0.3);
 }
 
 .image-container > *:not(:first-child) {

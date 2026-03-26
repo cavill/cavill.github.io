@@ -1,0 +1,10 @@
+{
+  "name": "cavill-github-io",
+  "private": true,
+  "scripts": {
+    "build:media": "node scripts/build-media.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.4"
+  }
+}

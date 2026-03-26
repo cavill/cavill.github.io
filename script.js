@@ -1,140 +1,210 @@
-var w = window.innerWidth;
-var h = window.innerHeight;
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+const maxDotHeight = 140;
+const placeholderGif =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+const defaultImageSizes =
+  "(max-width: 785px) calc(100vw - 40px), 66.666vw";
+const mediaManifest = window.__MEDIA_MANIFEST__ || { images: {}, videos: {} };
 
-var hgtmax = 140;
+function addDot(colorClass) {
+  const left =
+    viewportWidth > 784
+      ? Math.floor(Math.random() * (viewportWidth * 0.45))
+      : Math.floor(Math.random() * (viewportWidth * 0.8));
+  const top = Math.floor(Math.random() * (viewportHeight - maxDotHeight));
+  const degrees = Math.floor(Math.random() * 360);
+  const height = Math.floor(Math.random() * (maxDotHeight - 20 + 1) + 20);
 
-function addDot(c) {
-
-  if (w > 784) {
-    tLeft = Math.floor(Math.random()*(w*0.45))
-  } else {
-    tLeft = Math.floor(Math.random()*(w*0.8))
-  }
-  var tTop  = Math.floor(Math.random()*(h-hgtmax)),
-      deg = Math.floor(Math.random() * 360),
-      hgt = Math.floor(Math.random() * (hgtmax - 20 + 1) + 20);
-  
-  var dot = document.createElement('div');
-  dot.className = c + " dot";
-  dot.style.top = tTop + "px";
-  dot.style.left = tLeft + "px";
-  dot.style.transform = `rotate(${deg}deg)`;
-  dot.style.height = (hgt * 0.15) + "vw";
+  const dot = document.createElement("div");
+  dot.className = `${colorClass} dot`;
+  dot.style.top = `${top}px`;
+  dot.style.left = `${left}px`;
+  dot.style.transform = `rotate(${degrees}deg)`;
+  dot.style.height = `${height * 0.15}vw`;
   document.body.appendChild(dot);
 }
 
-window.addEventListener("load", function() {
-  const rgb = ["alpha", "beta", "gamma", "delta"];
+["alpha", "beta", "gamma", "delta"].forEach(addDot);
 
-  let dots = "";
-  for (let i = 0; i < rgb.length; i++) {
-    addDot(rgb[i]);
+function getImageAsset(key) {
+  return mediaManifest.images[key];
+}
+
+function getVideoAsset(key) {
+  return mediaManifest.videos[key];
+}
+
+function getPosterSrc(key) {
+  const imageAsset = getImageAsset(key);
+  if (!imageAsset) {
+    return "";
   }
-});
 
-/* Lazy-load implementation
-  - Defers images by moving `src` -> `data-src` and inserting a tiny placeholder
-  - Uses IntersectionObserver with a configurable `rootMargin` to load images when near viewport
-  - Relies on offset (rootMargin) alone; no special-casing of the first images
-  - Safe fallback for browsers without IntersectionObserver
-*/
-(function() {
-  function initLazyImages() {
-    const placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-    const imgs = Array.from(document.querySelectorAll('.images .image-container img'));
-    const vids = Array.from(document.querySelectorAll('.images .image-container video'));
-    if (!imgs.length && !vids.length) return;
+  return (
+    imageAsset.sources.find((source) => source.width >= 768)?.src ||
+    imageAsset.defaultSrc
+  );
+}
 
-    // Convert images to deferred placeholders (no special-casing)
-    imgs.forEach((img) => {
-      // if already handled (data-src present) skip
-      if (img.dataset.src) return;
+function configureImage(img) {
+  const assetKey = img.dataset.media;
+  const imageAsset = getImageAsset(assetKey);
+  if (!imageAsset) {
+    return;
+  }
 
-      const src = img.getAttribute('src');
-      if (src) {
-        img.dataset.src = src;
-        img.setAttribute('src', placeholder);
-        // hint to browsers (optional) — native lazy can be used alongside our script
-        img.setAttribute('loading', 'lazy');
-      }
-    });
+  img.width = imageAsset.width;
+  img.height = imageAsset.height;
+  img.decoding = "async";
+  img.loading = "lazy";
 
-    // Convert videos: move <source src> -> data-src and prevent preloading
-    vids.forEach((video) => {
-      const sources = Array.from(video.querySelectorAll('source'));
-      if (!sources.length) return;
-      sources.forEach((source) => {
-        if (source.dataset.src) return;
-        const src = source.getAttribute('src');
-        if (src) {
-          source.dataset.src = src;
-          source.removeAttribute('src');
+  if (!img.getAttribute("sizes")) {
+    img.setAttribute("sizes", defaultImageSizes);
+  }
+
+  img.dataset.src = imageAsset.defaultSrc;
+  img.dataset.srcset = imageAsset.sources
+    .map((source) => `${source.src} ${source.width}w`)
+    .join(", ");
+  img.dataset.sizes = img.getAttribute("sizes");
+  img.src = placeholderGif;
+}
+
+function configureVideo(video) {
+  const assetKey = video.dataset.video;
+  const videoAsset = getVideoAsset(assetKey);
+  if (!videoAsset) {
+    return;
+  }
+
+  video.width = videoAsset.width;
+  video.height = videoAsset.height;
+  video.preload = "none";
+
+  if (video.dataset.posterMedia) {
+    const posterSrc = getPosterSrc(video.dataset.posterMedia);
+    if (posterSrc) {
+      video.dataset.poster = posterSrc;
+    }
+  }
+
+  Array.from(video.querySelectorAll("source")).forEach((source) => {
+    const format = source.dataset.format;
+    const src = format ? videoAsset.sources[format] : "";
+    if (!src) {
+      return;
+    }
+
+    source.dataset.src = src;
+    source.removeAttribute("src");
+  });
+}
+
+function loadImage(img) {
+  if (img.dataset.srcset) {
+    img.srcset = img.dataset.srcset;
+    img.removeAttribute("data-srcset");
+  }
+
+  if (img.dataset.sizes) {
+    img.sizes = img.dataset.sizes;
+    img.removeAttribute("data-sizes");
+  }
+
+  if (img.dataset.src) {
+    img.src = img.dataset.src;
+    img.removeAttribute("data-src");
+  }
+
+  img.removeAttribute("loading");
+}
+
+function loadVideo(video) {
+  if (video.dataset.poster && !video.poster) {
+    video.poster = video.dataset.poster;
+  }
+
+  let loaded = false;
+
+  Array.from(video.querySelectorAll("source")).forEach((source) => {
+    if (!source.dataset.src) {
+      return;
+    }
+
+    source.src = source.dataset.src;
+    source.removeAttribute("data-src");
+    loaded = true;
+  });
+
+  if (!loaded) {
+    return;
+  }
+
+  video.preload = "metadata";
+
+  try {
+    video.load();
+  } catch (error) {
+    return;
+  }
+
+  if (video.hasAttribute("autoplay")) {
+    video.muted = true;
+    const playback = video.play?.();
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(() => {});
+    }
+  }
+}
+
+(function initLazyMedia() {
+  const imgs = Array.from(document.querySelectorAll(".images .image-container img"));
+  const videos = Array.from(
+    document.querySelectorAll(".images .image-container video")
+  );
+
+  if (!imgs.length && !videos.length) {
+    return;
+  }
+
+  imgs.forEach(configureImage);
+  videos.forEach(configureVideo);
+
+  if (!("IntersectionObserver" in window)) {
+    imgs.forEach(loadImage);
+    videos.forEach(loadVideo);
+    return;
+  }
+
+  const imageObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
         }
+
+        loadImage(entry.target);
+        observer.unobserve(entry.target);
       });
-      // Stop the browser from eager-loading
-      try { video.preload = 'none'; } catch (e) {}
-      video.setAttribute('data-lazy', 'true');
-    });
+    },
+    { rootMargin: "400px 0px", threshold: 0.01 }
+  );
 
-    function loadImage(img) {
-      const real = img.dataset.src;
-      if (!real) return;
-      img.src = real;
-      img.removeAttribute('data-src');
-      img.removeAttribute('loading');
-    }
+  const videoObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-    function loadVideo(video) {
-      const sources = Array.from(video.querySelectorAll('source'));
-      let loaded = false;
-      sources.forEach((source) => {
-        const real = source.dataset.src;
-        if (!real) return;
-        source.src = real;
-        source.removeAttribute('data-src');
-        loaded = true;
+        loadVideo(entry.target);
+        observer.unobserve(entry.target);
       });
-      if (!loaded) return;
-      video.removeAttribute('data-lazy');
-      try { video.preload = 'auto'; } catch (e) {}
-      // load new sources
-      try { video.load(); } catch (e) {}
-      // retain autoplay behaviour — ensure muted so autoplay is allowed by browsers
-      if (video.hasAttribute('autoplay')) {
-        try { video.muted = true; } catch (e) {}
-        const p = video.play && video.play();
-        if (p && typeof p.catch === 'function') p.catch(() => {});
-      }
-    }
+    },
+    { rootMargin: "250px 0px", threshold: 0.01 }
+  );
 
-    if ('IntersectionObserver' in window) {
-      const rootMargin = '1000px 0px'; // adjust to control how early media starts loading
-      const io = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const tgt = entry.target;
-          if (tgt.tagName === 'IMG') {
-            loadImage(tgt);
-          } else if (tgt.tagName === 'VIDEO') {
-            loadVideo(tgt);
-          }
-          observer.unobserve(tgt);
-        });
-      }, { rootMargin, threshold: 0.01 });
-
-      // Observe all images and videos; loading will be controlled by the IntersectionObserver offset
-      imgs.forEach((img) => io.observe(img));
-      vids.forEach((video) => io.observe(video));
-    } else {
-      // Fallback: load all deferred images and videos immediately
-      imgs.forEach((img) => loadImage(img));
-      vids.forEach((video) => loadVideo(video));
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLazyImages);
-  } else {
-    initLazyImages();
-  }
+  imgs.forEach((img) => imageObserver.observe(img));
+  videos.forEach((video) => videoObserver.observe(video));
 })();
