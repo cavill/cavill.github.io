@@ -25,9 +25,7 @@ function addDot(colorClass) {
   document.body.appendChild(dot);
 }
 
-window.addEventListener("load", () => {
-  ["alpha", "beta", "gamma", "delta"].forEach(addDot);
-});
+["alpha", "beta", "gamma", "delta"].forEach(addDot);
 
 function getImageAsset(key) {
   return mediaManifest.images[key];
