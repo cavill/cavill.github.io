@@ -1,6 +1,5 @@
-const viewportWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
 const maxDotHeight = 140;
+const dotColorClasses = ["alpha", "beta", "gamma", "delta"];
 const placeholderGif =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 const defaultImageSizes =
@@ -8,6 +7,8 @@ const defaultImageSizes =
 const mediaManifest = window.__MEDIA_MANIFEST__ || { images: {}, videos: {} };
 
 function addDot(colorClass) {
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
   const left =
     viewportWidth > 784
       ? Math.floor(Math.random() * (viewportWidth * 0.45))
@@ -25,7 +26,33 @@ function addDot(colorClass) {
   document.body.appendChild(dot);
 }
 
-["alpha", "beta", "gamma", "delta"].forEach(addDot);
+function addDots() {
+  dotColorClasses.forEach(addDot);
+}
+
+function reloadDots() {
+  document.querySelectorAll(".dot").forEach((dot) => dot.remove());
+  addDots();
+}
+
+function initHeaderDotReload() {
+  const siteHeader = document.querySelector(".container");
+
+  if (!siteHeader) {
+    return;
+  }
+
+  siteHeader.addEventListener("click", (event) => {
+    if (event.target instanceof Element && event.target.closest("a")) {
+      return;
+    }
+
+    reloadDots();
+  });
+}
+
+addDots();
+initHeaderDotReload();
 
 function getImageAsset(key) {
   return mediaManifest.images[key];
