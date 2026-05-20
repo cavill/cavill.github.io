@@ -308,6 +308,34 @@ window.__MEDIA_MANIFEST__ = {
         }
       ]
     },
+    "helvetitee": {
+      "width": 3840,
+      "height": 2160,
+      "animated": false,
+      "defaultSrc": "/images/generated/helvetitee-768.webp",
+      "sources": [
+        {
+          "width": 480,
+          "src": "/images/generated/helvetitee-480.webp"
+        },
+        {
+          "width": 768,
+          "src": "/images/generated/helvetitee-768.webp"
+        },
+        {
+          "width": 1024,
+          "src": "/images/generated/helvetitee-1024.webp"
+        },
+        {
+          "width": 1440,
+          "src": "/images/generated/helvetitee-1440.webp"
+        },
+        {
+          "width": 1920,
+          "src": "/images/generated/helvetitee-1920.webp"
+        }
+      ]
+    },
     "knowall-alt-poster": {
       "width": 1920,
       "height": 1080,
